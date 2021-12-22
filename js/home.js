@@ -37,7 +37,7 @@ const handleResponse = (innerhtml, res) => {
 
 
 
-
+//update counters in textboxes
 window.onload = function () {
     var totalView = document.getElementById('number1');
     var seconds = 0
