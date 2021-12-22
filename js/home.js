@@ -1,7 +1,4 @@
 
-
-
-
 //on click of buttons, POST request will be called on specified API endpoints
 const handleSubmit = async (key, num, innerhtml) => {
     var postUrl = {
