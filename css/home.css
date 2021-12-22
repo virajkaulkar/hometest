@@ -1,0 +1,10 @@
+.border_radius25{
+    border-radius: 25px;
+    border: 1px solid #808080;
+}
+
+div.fixed-height {
+    height: 400px !important;
+    overflow-y: auto;
+    }
+    
