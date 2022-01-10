@@ -6,15 +6,17 @@ const handleSubmit = async (key, num, innerhtml) => {
         'number2' : 'https://val_number2'
     }
     postUrl = postUrl[key]
+    const data = {}
+    data[key] = num
     const response = await fetch(postUrl, {
         method: 'POST',
-        body: JSON.stringify({key, num}), 
+        body: JSON.stringify(data), 
         headers: {
             'Content-Type': 'application/json'
         }
     }).then((response)=>{
         if (response.ok) {
-            handleResponse(innerhtml, response.json())
+            handleResponse(innerhtml, response.text())
           } else {
             throw new Error('Something went wrong');
         }})
@@ -41,20 +43,33 @@ const handleResponse = (innerhtml, res) => {
 window.onload = function () {
     var totalView = document.getElementById('number1');
     var seconds = 0
-    function incrementSeconds() {
-        seconds += 1;
-        totalView.value = seconds.toFixed(2);
-    }
-
-    var setTimeNumber1 = setInterval(incrementSeconds, 900);
 
     var number2Text = document.getElementById('number2');
     var number2Value = 0
-    function incrementNumber2() {
+
+    setTimeout(function run() {
+        seconds += 1;
+        totalView.value = seconds.toFixed(2);
+        
         number2Value += 0.6;
         number2Text.value = number2Value.toFixed(2);
-    }
+        setTimeout(run, 0);
+    }, 0);
 
-    var setTimeNumber2 = setInterval(incrementNumber2, 800);
+    // function incrementSeconds() {
+    //     seconds += 1;
+    //     totalView.value = seconds.toFixed(2);
+    // }
+
+    // var setTimeNumber1 = setInterval(incrementSeconds, 900);
+
+    
+
+    // function incrementNumber2() {
+    //     number2Value += 0.6;
+    //     number2Text.value = number2Value.toFixed(2);
+    // }
+
+    // var setTimeNumber2 = setInterval(incrementNumber2, 800);
 
 };
